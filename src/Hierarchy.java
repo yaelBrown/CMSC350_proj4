@@ -1,6 +1,19 @@
+/**
+ * Filename: Project4.java
+ * Author: Yael Brown
+ * Date: 8/9/2020
+ * Brief Purpose of the Program: Create a Directed Graph
+ * and create hierarchial and parenthesized representation
+ * of the graph. Also, indicate if there are unreachable
+ * verticies.
+ */
+
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Generates hierarchial representation of graph
+ */
 class Hierarchy<E> implements DFSActions<E> {
 
     @Override
@@ -23,10 +36,18 @@ class Hierarchy<E> implements DFSActions<E> {
         r.add(")");
     }
 
+    @Override
+    public String toString() {
+        return printHierarchy();
+    }
+
     public Queue<String> r = new LinkedList<>();
 
+    /**
+     * Creates hierarchy for toString()
+     * @return
+     */
     public String printHierarchy() {
-        int tempSize = r.size();
         StringBuilder out = new StringBuilder();
 
         int size = 0;

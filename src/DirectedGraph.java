@@ -1,3 +1,13 @@
+/**
+ * Filename: DirectedGraph.java
+ * Author: Yael Brown
+ * Date: 8/9/2020
+ * Brief Purpose of the Program: Create a Directed Graph
+ * and create hierarchial and parenthesized representation
+ * of the graph. Also, indicate if there are unreachable
+ * verticies.
+ */
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,6 +17,11 @@ import java.util.Set;
 
 public class DirectedGraph {
 
+    /**
+     * Constructor takes File and creates DirectedGraph
+     * @param f
+     * @throws IOException
+     */
     public DirectedGraph(File f) throws IOException {
         ArrayList<Vertex> temp = new ArrayList<>();
 
@@ -43,11 +58,17 @@ public class DirectedGraph {
     ParenthesizedList parenthesizedList = new ParenthesizedList();
     Hierarchy hierarchy = new Hierarchy();
 
+    /**
+     * Performs depth first search.
+     */
     public void depthFirstSearch() {
         dfsHelper(graph.get(0).getName());
-        hierarchy.toString();
     }
 
+    /**
+     * Helper method that is called recursively to perform depth first search
+     * @param v
+     */
     private void dfsHelper(String v) {
         if (discoveredVertices.contains(v)) {
             cycle = true;
@@ -82,6 +103,11 @@ public class DirectedGraph {
         discoveredVertices.remove(v);
     }
 
+    /**
+     * Helper method that searches for the vertex within the arrayList of verticies
+     * @param vName
+     * @return
+     */
     private Vertex findVertex(String vName) {
         Vertex out = null;
 
@@ -94,6 +120,9 @@ public class DirectedGraph {
         return out;
     }
 
+    /**
+     * Method checks and prints which verticies are unreachable.
+     */
     public void displayUnreachableVerticies() {
         for (Vertex vt : graph) {
             if (visitedVertices.contains(vt.getName())) {
